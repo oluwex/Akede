@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head_title %} {{ article.name }} - {{ block.super }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <article>
+            <h2>{{ article.name }}</h2>
+                <i class="fa fa-calendar"></i> {{ article.timestamp|date }} | <i class="fa fa-clock-o"></i> {{ article.timestamp|time|upper }}
+            <hr/>
+            <p>{{ article.content }}</p>
+            </article>
+        </div>
+    </div>
+{% endblock %}

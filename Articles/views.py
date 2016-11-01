@@ -12,6 +12,6 @@ def index(request):
 
 
 def detail(request, id=None):
-    post = get_object_or_404(Article, id=id)
-    context = {'post': post}
-    return render(request, 'detail.html', context)
+    article = get_object_or_404(Article, pk=id)
+    context = {'article': article}
+    return render(request, 'article/details.html', context)

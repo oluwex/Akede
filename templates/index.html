@@ -3,18 +3,16 @@
 {% block head_title %}Iroyin | {{ block.super }}{% endblock %}
 
 {% block content %}
+    <div class="container">
     {% for post in posts %}
         <div class="row">
-            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a></h2>
+        <div class="col-sm-6">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a> <small>{{ post.timestamp|timesince }} ago.</small></h2>
             <div>
-            <label for="id_article">Oro Iroyin:</label>
-            {{ post.content|linebreaks|truncatechars:100 }}
+            {{ post.content|linebreaks|truncatechars:80 }}
             </div>
         </div>
-        <br />
-{#        <div class="row">#}
-{#            <label for="id_article">Oro Iroyin:</label>#}
-{#            {{ post.content }}#}
-{#        </div></div>#}
+        </div>
     {% endfor %}
+    </div>
 {% endblock %}
