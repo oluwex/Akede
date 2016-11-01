@@ -7,7 +7,9 @@
         <div class="row">
             <article>
             <h2>{{ article.name }}</h2>
-                <i class="fa fa-calendar"></i> {{ article.timestamp|date }} | <i class="fa fa-clock-o"></i> {{ article.timestamp|time|upper }}
+                <i class="fa fa-calendar fa-lg"></i> {{ article.timestamp|date }}
+                | <i class="fa fa-clock-o fa-lg"></i> {{ article.timestamp|time|upper }}
+                | {{ article.category|upper }}
             <hr/>
             <p>{{ article.content }}</p>
             </article>
