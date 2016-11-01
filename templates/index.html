@@ -4,13 +4,17 @@
 
 {% block content %}
     {% for post in posts %}
-        <div class="row1">
-            <label for="id_name">Akole:</label>
-            {{ post.name }}
-        </div>
-        <div class="row2">
+        <div class="row">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a></h2>
+            <div>
             <label for="id_article">Oro Iroyin:</label>
-            {{ post.article }}
+            {{ post.content|linebreaks|truncatechars:100 }}
+            </div>
         </div>
+        <br />
+{#        <div class="row">#}
+{#            <label for="id_article">Oro Iroyin:</label>#}
+{#            {{ post.content }}#}
+{#        </div></div>#}
     {% endfor %}
 {% endblock %}

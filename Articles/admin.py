@@ -8,9 +8,13 @@ class ArticleModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Article
 
-    list_display = ['name', 'timestamp', 'updated_time','category']
+    list_display = ['name', 'timestamp', 'updated', 'category']
     list_display_links = ['name']
     search_fields = ['name', 'article']
-    list_filter = ['updated_time', 'author', 'category']
+    list_filter = ['category', 'timestamp']
+    # fieldsets = [
+    #     (None, {'fields': ['name', 'content', 'category']}),
+    #     ('Author(s)', {'fields': ['author']}),
+    # ]
 
 admin.site.register(Article, ArticleModelAdmin)
