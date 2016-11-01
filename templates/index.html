@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Iroyin | {{ block.super }}{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="row1">
+            <label for="id_name">Akole:</label>
+            {{ post.name }}
+        </div>
+        <div class="row2">
+            <label for="id_article">Oro Iroyin:</label>
+            {{ post.article }}
+        </div>
+    {% endfor %}
+{% endblock %}
