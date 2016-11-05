@@ -11,8 +11,8 @@ from django.contrib.auth.models import User
 class Article(models.Model):
 
     CATEGORIES = [
-        ('politics', _('Oselu')),
-        ('general', _('Gbogbogbo'))
+        ('oselu', _('Oselu')),
+        ('gbogbogbo', _('Gbogbogbo'))
     ]
 
     name = models.CharField(
@@ -27,6 +27,13 @@ class Article(models.Model):
         max_length=1000,
         help_text='Type the content of your article here'
     )
+
+    # TODO
+    image = models.ImageField(null=True, blank=True, height_field="height_field", width_field="width_field")
+
+    height_field = models.IntegerField(default=0)
+
+    width_field = models.IntegerField(default=0)
 
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Date published')
 

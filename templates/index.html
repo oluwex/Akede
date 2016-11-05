@@ -7,7 +7,7 @@
     {% for post in posts %}
         <div class="row">
         <div class="col-sm-6">
-            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a> <small>{{ post.timestamp|timesince }} ago.</small></h2>
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a> <small>{{ post.timestamp|timesince }} seyin.</small></h2>
             <div>
             {{ post.content|linebreaks|truncatechars:80 }}
             </div>

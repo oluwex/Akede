@@ -1,18 +1,14 @@
-{% extends 'base.html' %}
-
-{% block head_title %} {{ article.name }} - {{ block.super }} {% endblock %}
-
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <article>
+{% extends 'base.html' %} {% block head_title %} {{ article.name }} - {{ block.super }} {% endblock %} {% block content %}
+<div class="container">
+    <div class="row">
+        <article>
             <h2>{{ article.name }}</h2>
-                <i class="fa fa-calendar fa-lg"></i> {{ article.timestamp|date }}
-                | <i class="fa fa-clock-o fa-lg"></i> {{ article.timestamp|time|upper }}
-                | {{ article.category|upper }}
+            <h5>Akoroyin: {{ article.author.first|upper }}</h5>
+            <i class="fa fa-calendar"></i> {{ article.timestamp|date }} | <i class="fa fa-clock-o"></i> {{ article.timestamp|time|upper }} | {{ article.category|upper }}
             <hr/>
+            <img src="{{ article.image.url }}" class="img-responsive"  />
             <p>{{ article.content }}</p>
-            </article>
-        </div>
+        </article>
     </div>
+</div>
 {% endblock %}

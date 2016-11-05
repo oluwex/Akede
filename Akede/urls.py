@@ -21,8 +21,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^iroyin/', include("Articles.urls", namespace='articles', app_name='Articles'))
+    url(r'^iroyin/', include("Articles.urls", namespace='articles', app_name='Articles')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
