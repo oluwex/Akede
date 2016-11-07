@@ -12,7 +12,8 @@ class Article(models.Model):
 
     CATEGORIES = [
         ('oselu', _('Oselu')),
-        ('gbogbogbo', _('Gbogbogbo'))
+        ('gbogbogbo', _('Gbogbogbo')),
+        ('owo', _('Owo')),
     ]
 
     name = models.CharField(
@@ -25,6 +26,8 @@ class Article(models.Model):
     content = models.TextField(
         _('Oro Iroyin'),
         max_length=1000,
+        blank=False,
+        null=True,
         help_text='Type the content of your article here'
     )
 
