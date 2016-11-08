@@ -4,10 +4,10 @@
         <article>
             <h2>{{ article.name }}</h2>
             {% if article.image %}<img src="{{ article.image.url }}" class="img-responsive" /> {% endif %}
-            <h5>Akoroyin: {{ article.author.first.full_name|upper }}</h5>
+            <h5>Akoroyin: {{ article.author.first|upper }}</h5>
             <i class="fa fa-calendar"></i> {{ article.timestamp|date }} | <i class="fa fa-clock-o"></i> {{ article.timestamp|time|upper }} | {{ article.category|upper }}
             <hr/>
-            <p>{{ article.content }}</p>
+            <p>{{ article.content|linebreaks }}</p>
         </article>
     </div>
 </div>

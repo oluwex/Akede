@@ -13,7 +13,7 @@ class ArticleModelAdmin(admin.ModelAdmin):
     search_fields = ['name', 'article']
     list_filter = ['category', 'timestamp']
     fieldsets = [
-        (None, {'fields': ['name', 'content', 'category']}),
+        (None, {'fields': ['name', 'slug', 'content', 'image','category']}),
         ('Author(s)', {'fields': ['author']}),
         # ('Date Information', {'fields': ['updated','timestamp']})
     ]

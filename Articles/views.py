@@ -11,7 +11,10 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def detail(request, id=None):
-    article = get_object_or_404(Article, pk=id)
-    context = {'article': article}
+def detail(request, id=None, slug=None):
+    # article = get_object_or_404(Article, pk=id)
+    article = get_object_or_404(Article, slug=slug)
+    context = {
+        'article': article
+    }
     return render(request, 'article/details.html', context)
