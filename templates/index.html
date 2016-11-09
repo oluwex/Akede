@@ -1,19 +1,16 @@
-{% extends 'base.html' %}
-
-{% block head_title %}Iroyin | {{ block.super }}{% endblock %}
-
-{% block content %}
-    <div class="container">
-    {% for post in posts %}
-        <div class="row">
+{% extends 'base.html' %} {% block head_title %}Iroyin | {{ block.super }}{% endblock %} {% block content %}
+<div class="container">
+    {% for article in articles %}
+    <div class="row">
         <div class="col-sm-6">
             {# Todo: Change the timesince to Yoruba. #}
-            <h2><a href="{{ post.get_absolute_url }}">{{ post.name }}</a> <small>{{ post.timestamp|timesince }} ago.</small></h2>
+            <h2><a href="{{ article.get_absolute_url }}">{{ article.name }}</a> <small>{{ article.publish_date }}</small></h2>
+            <p>Akoroyin: {{ article.author.first.get_full_name }}</p>
             <div>
-            {{ post.content|linebreaks|truncatechars:80 }}
+                {{ article.content|linebreaks|truncatechars:80 }}
             </div>
         </div>
-        </div>
-    {% endfor %}
     </div>
+    {% endfor %}
+</div>
 {% endblock %}

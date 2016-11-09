@@ -13,9 +13,9 @@ class ArticleModelAdmin(admin.ModelAdmin):
     search_fields = ['name', 'article']
     list_filter = ['category', 'timestamp']
     fieldsets = [
-        (None, {'fields': ['name', 'slug', 'content', 'image','category']}),
-        ('Author(s)', {'fields': ['author']}),
-        # ('Date Information', {'fields': ['updated','timestamp']})
+        (None, {'fields': ['name', 'slug', 'category', 'content']}),
+        ('Image information', {'fields': ['image','height_field','width_field']}),
+        ('Author(s) information', {'fields': ['author']}),
     ]
 
 admin.site.register(Article, ArticleModelAdmin)

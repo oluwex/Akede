@@ -6,7 +6,7 @@ from .models import Article
 def index(request):
     posts = Article.objects.all()
     context = {
-        'posts': posts
+        'articles': posts
     }
     return render(request, 'index.html', context)
 

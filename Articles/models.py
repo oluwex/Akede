@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 # Create your models here.
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -13,9 +14,9 @@ from django.utils.text import slugify
 class Article(models.Model):
 
     CATEGORIES = [
-        ('oselu', _('Oselu')),
-        ('gbogbogbo', _('Gbogbogbo')),
-        ('owo', _('Owo')),
+        ('Oselu', _('Oselu')),
+        ('Gbogbogbo', _('Gbogbogbo')),
+        ('Owo', _('Owo')),
     ]
 
     name = models.CharField(
@@ -42,11 +43,15 @@ class Article(models.Model):
 
     width_field = models.IntegerField(default=0)
 
+    draft = models.BooleanField(default=False)
+
+    publish_date = models.DateField(auto_now=False, auto_now_add=False)
+
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Date published')
 
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='Date updated')
 
-    author = models.ManyToManyField(User, related_name='written_by', verbose_name="Author(s)")
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='written_by', verbose_name="Author(s)")
 
     category = models.CharField(
         _("Ipele"),
