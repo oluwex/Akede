@@ -25,6 +25,7 @@ class Article(models.Model):
         help_text='Name of the article',
         blank=False,
         null=False,
+        unique=True,
     )
     content = models.TextField(
         _('Oro Iroyin'),
