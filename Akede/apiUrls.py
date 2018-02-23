@@ -14,17 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
+from Articles.APIArea.apiUrls import router
 from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
-
 from rest_framework.authtoken.views import obtain_auth_token
-
-from Articles.apiUrls import router
 
 urlpatterns = [
     url(r'^api/token/', obtain_auth_token, name="token"),
     url(r'^api/', include(router.urls)),
+]
+
+urlpatterns += [
+    url(r'^api-auth/', include("rest_framework.urls", namespace="rest_framework")),
 ]
 
 if settings.DEBUG:

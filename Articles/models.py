@@ -14,9 +14,9 @@ from django.utils.text import slugify
 class Article(models.Model):
 
     CATEGORIES = [
-        ('Oselu', _('Oselu')),
-        ('Gbogbogbo', _('Gbogbogbo')),
-        ('Owo', _('Owo')),
+        ('politics', _('Oselu')),
+        ('general', _('Gbogbogbo')),
+        ('business', _('Owo')),
     ]
 
     name = models.CharField(
@@ -29,7 +29,7 @@ class Article(models.Model):
     )
     content = models.TextField(
         _('Oro Iroyin'),
-        max_length=1000,
+        max_length=2000,
         blank=False,
         null=True,
         help_text='Type the content of your article here'
@@ -52,7 +52,9 @@ class Article(models.Model):
 
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='Date updated')
 
-    author = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='written_by', verbose_name="Author(s)")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='written_by', on_delete=models.CASCADE)
+
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='updated_by', on_delete=models.CASCADE, null=True, blank=True)
 
     category = models.CharField(
         _("Ipele"),
@@ -65,6 +67,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'Iroyin'
         verbose_name_plural = 'Iroyin'
+        ordering  = ["-publish_date","-updated", ]
 
 
     def __str__(self):

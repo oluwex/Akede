@@ -1,10 +1,105 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block head_title %} {{ title }} | {{ block.super }} {% endblock %} {% block content %}
+<!--<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}-->
+<!--<div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-row">
+                        {{ form.name.errors }}
+                        <label for="{{ form.name.id_for_label }}" class="required">Name/Title:</label> {{ form.name }}
+                        <p class="help">{{ form.name.help_text }}</p>
+                    </div>
+                    <div class="form-row">
+                        {{ form.content.errors }}
+                        <label for="{{ form.content.id_for_label }}" class="required">Content:</label>
+                        <div class="card-box">
+                            <textarea id="{{ form.content.id_for_label }}" name="content">{% if form.content.value != None %}{{ form.content.value }}{% else %}{{ "" }}{% endif %}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        {{ form.image.errors }}
+                        <label for="{{ form.image.id_for_label }}">Image:</label> {{ form.image }}
+                        <p class="help">{{ form.image.help_text }}</p>
+                    </div>
+                    <div class="form-row">
+                        {{ form.category.errors }}
+                        <label for="{{ form.category.id_for_label }}" class="required">Category:</label> {{ form.category }}
+                        <p class="help">{{ form.category.help_text }}</p>
+                    </div>
+                    <div class="form-row">
+                        {{ form.draft.errors }}
+                        <label for="{{ form.draft.id_for_label }}" class="required">Draft:</label> {{ form.draft }}
+                        <p class="help">{{ form.draft.help_text }}</p>
+                    </div>
+                    <div class="form-row">
+                        {{ form.publish_date.errors }}
+                        <label for="{{ form.publish_date.id_for_label }}" class="required">Publish Date:</label> {{ form.publish_date }}
+                        <p class="help">{{ form.publish_date.help_text }}</p>
+                    </div>
+                    <input type="submit" value="{{ title }} Article" class="btn btn-default">
+                </div>-->
+<!-- end col -->
+<!--</div>-->
+<!-- End row -->
 
-{% block head_title %} {{ title }} | {{ block.super }} {% endblock %}
+<!--</div>-->
+<!-- container -->
 
-{% block content %}
-    <form action="" method="POST">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{{ title }} Article" class="btn btn-default">
-    </form> 
+<!--</div>-->
+<div class="row">
+    {% crispy form form.helper %}
+</div>
+<!--</form>-->
+{% endblock %} {% block scripts %}
+<script>
+    var resizefunc = [];
+</script>
+<script src="{% static 'plugins/tinymce/tinymce.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        if ($("#{{ form.content.id_for_label }}").length > 0) {
+            tinymce.init({
+                selector: "textarea#{{ form.content.id_for_label }}",
+                theme: "modern",
+                height: 300,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                style_formats: [{
+                    title: 'Bold text',
+                    inline: 'b'
+                }, {
+                    title: 'Red text',
+                    inline: 'span',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Red header',
+                    block: 'h1',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Example 1',
+                    inline: 'span',
+                    classes: 'example1'
+                }, {
+                    title: 'Example 2',
+                    inline: 'span',
+                    classes: 'example2'
+                }, {
+                    title: 'Table styles'
+                }, {
+                    title: 'Table row 1',
+                    selector: 'tr',
+                    classes: 'tablerow1'
+                }]
+            });
+        }
+    });
+</script>
 {% endblock %}
